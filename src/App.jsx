@@ -29,6 +29,7 @@ function App() {
   const quote = quotes[index];
 
   return (
+    <div id="wrapper">
     <div id="quote-box">
       {quote && (
         <div>
@@ -48,6 +49,7 @@ function App() {
       <a id="tumblr-quote" href="https://www.tumblr.com/">
         <i className="fab fa-tumblr-square"></i>
       </a>
+    </div>
     </div>
   );
 }
