@@ -30,14 +30,17 @@ function App() {
 
   return (
     <div id="wrapper">
-    <div id="quote-box">
       {quote && (
-        <div>
-          <p id="text">
-            <i className="fas fa-quote-left"></i>
-            {quote.quote}
-          </p>
-          <p id="author">{quote.author}</p>
+        <div id="quote-box">
+          <div id="quote-text">
+            <p id="text">
+              <i className="fas fa-quote-left"></i>
+              {quote.quote}
+            </p>
+          </div>
+          <div id="quote-author">
+            <p id="author">-{quote.author}</p>
+          </div>
         </div>
       )}
       <button id="new-quote" onClick={getRandomIndex}>
@@ -49,7 +52,6 @@ function App() {
       <a id="tumblr-quote" href="https://www.tumblr.com/">
         <i className="fab fa-tumblr-square"></i>
       </a>
-    </div>
     </div>
   );
 }
