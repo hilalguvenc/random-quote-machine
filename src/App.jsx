@@ -46,12 +46,14 @@ function App() {
       <button id="new-quote" onClick={getRandomIndex}>
         New Quote
       </button>
-      <a id="tweet-quote" href="twitter.com/intent/tweet" target="_blank">
-        <i className="fab fa-twitter-square"></i>
-      </a>
-      <a id="tumblr-quote" href="https://www.tumblr.com/">
-        <i className="fab fa-tumblr-square"></i>
-      </a>
+      <div id="buttons">
+        <a id="tweet-quote" href="twitter.com/intent/tweet" target="_blank">
+          <i className="fab fa-twitter-square"></i>
+        </a>
+        <a id="tumblr-quote" href="https://www.tumblr.com/">
+          <i className="fab fa-tumblr-square"></i>
+        </a>
+      </div>
     </div>
   );
 }
