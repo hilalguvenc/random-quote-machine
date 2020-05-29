@@ -10,6 +10,18 @@ function App() {
     },
   ]);
   const [index, setIndex] = useState(0);
+  const [currentColor, setCurrentColor] = useState(0);
+  const [colors, setColors] = useState([
+    "rgb(231, 76, 60)",
+    "rgb(22, 160, 133)",
+    "rgb(155, 89, 182)",
+    "rgb(243, 156, 18)",
+    "rgb(44, 62, 80)",
+    "rgb(71, 46, 50)",
+    "rgb(115, 168, 87)",
+    "rgb(251, 105, 100)",
+    "rgb(189, 187, 153)",
+  ]);
 
   const fetchQuotes = async () => {
     const response = await fetch(
@@ -25,34 +37,54 @@ function App() {
   const getRandomIndex = () => {
     const index = Math.floor(Math.random() * 102);
     setIndex(index);
+    getColor();
   };
   const quote = quotes[index];
 
+  const getColor = () =>
+    setCurrentColor(Math.floor(Math.random() * colors.length));
+  console.log(currentColor);
   return (
-    <div id="wrapper">
-      {quote && (
-        <div id="quote-box">
-          <div id="quote-text">
-            <p id="text">
-              <i className="fas fa-quote-left"></i>
-              {quote.quote}
-            </p>
+    <div id="fullpage" style={{ backgroundColor: colors[currentColor] }}>
+      <div id="wrapper">
+        {quote && (
+          <div id="quote-box" style={{ color: colors[currentColor] }}>
+            <div id="quote-text">
+              <p id="text">
+                <i className="fas fa-quote-left"></i>
+                {quote.quote}
+              </p>
+            </div>
+            <div id="quote-author">
+              <p id="author">-{quote.author}</p>
+            </div>
           </div>
-          <div id="quote-author">
-            <p id="author">-{quote.author}</p>
-          </div>
+        )}
+        <button
+          id="new-quote"
+          onClick={getRandomIndex}
+          style={{ backgroundColor: colors[currentColor] }}
+        >
+          New Quote
+        </button>
+        <div id="buttons">
+          <a
+            id="tweet-quote"
+            href="https://twitter.com/home"
+            target="_blank"
+            style={{ color: colors[currentColor] }}
+          >
+            <i className="fab fa-twitter-square"></i>
+          </a>
+          <a
+            id="tumblr-quote"
+            href="https://www.tumblr.com/"
+            target="_blank"
+            style={{ color: colors[currentColor] }}
+          >
+            <i className="fab fa-tumblr-square"></i>
+          </a>
         </div>
-      )}
-      <button id="new-quote" onClick={getRandomIndex}>
-        New Quote
-      </button>
-      <div id="buttons">
-        <a id="tweet-quote" href="twitter.com/intent/tweet" target="_blank">
-          <i className="fab fa-twitter-square"></i>
-        </a>
-        <a id="tumblr-quote" href="https://www.tumblr.com/">
-          <i className="fab fa-tumblr-square"></i>
-        </a>
       </div>
     </div>
   );
