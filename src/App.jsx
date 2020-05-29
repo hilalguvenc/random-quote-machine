@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { CSSTransition } from "react-transition-group";
 import "./App.css";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
     "rgb(251, 105, 100)",
     "rgb(189, 187, 153)",
   ]);
+  const [isVisible, setIsVisible] = useState(false);
 
   const fetchQuotes = async () => {
     const response = await fetch(
@@ -38,6 +40,7 @@ function App() {
     const index = Math.floor(Math.random() * 102);
     setIndex(index);
     getColor();
+    setIsVisible(!isVisible);
   };
   const quote = quotes[index];
 
@@ -49,15 +52,15 @@ function App() {
       <div id="wrapper">
         {quote && (
           <div id="quote-box" style={{ color: colors[currentColor] }}>
-            <div id="quote-text">
-              <p id="text">
-                <i className="fas fa-quote-left"></i>
-                {quote.quote}
-              </p>
-            </div>
-            <div id="quote-author">
-              <p id="author">-{quote.author}</p>
-            </div>
+            <CSSTransition in={isVisible} timeout={500} classNames="sample">
+              <div>
+                <p id="text">
+                  <i className="fas fa-quote-left"></i>
+                  {quote.quote}
+                </p>
+                <p id="author">-{quote.author}</p>
+              </div>
+            </CSSTransition>
           </div>
         )}
         <button

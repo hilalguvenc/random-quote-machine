@@ -13,13 +13,13 @@
   padding: 20px;
 }
 
-#quote-text {
+#text {
   font-size: 25px;
   width: 450px;
   transition: background-color 2s;
   text-align: center;
 }
-#quote-author {
+#author {
   text-align: right;
 }
 #new-quote {
@@ -41,4 +41,22 @@
   width: 100px;
   height: 100px;
   font-size: 35px;
+}
+.sample-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.sample-enter.sample-enter-active {
+  opacity: 1;
+  transition: opacity 500ms linear;
+}
+
+.sample-exit {
+  opacity: 0;
+}
+
+.sample-exit.sample-exit-active {
+  opacity: 1;
+  transition: opacity 500ms linear;
 }
